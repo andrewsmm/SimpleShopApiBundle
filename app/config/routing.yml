@@ -1,5 +1,6 @@
 simple_shop_api:
     resource: "@SimpleShopApiBundle/Resources/config/routing.yml"
     prefix:   /v1
+    type: rest
 
 
