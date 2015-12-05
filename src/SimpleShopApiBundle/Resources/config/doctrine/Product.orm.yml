@@ -1,0 +1,54 @@
+SimpleShopApiBundle\Entity\Product:
+    type: entity
+    table: product
+    indexes:
+        fk_product_category_idx:
+            columns:
+                - category_id
+    id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        price:
+            type: decimal
+            nullable: false
+            precision: 19
+            scale: 2
+        dtCreated:
+            type: datetime
+            nullable: false
+            column: dt_created
+        dtUpdated:
+            type: datetime
+            nullable: false
+            column: dt_updated
+    manyToOne:
+        category:
+            targetEntity: Category
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                category_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

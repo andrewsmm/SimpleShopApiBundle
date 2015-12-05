@@ -1,0 +1,3 @@
+simple_shop_api_homepage:
+    path:     /
+    defaults: { _controller: SimpleShopApiBundle:Default:index }

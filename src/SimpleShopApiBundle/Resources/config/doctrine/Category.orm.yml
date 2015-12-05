@@ -1,0 +1,26 @@
+SimpleShopApiBundle\Entity\Category:
+    type: entity
+    table: category
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        rootId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: root_id
+    lifecycleCallbacks: {  }

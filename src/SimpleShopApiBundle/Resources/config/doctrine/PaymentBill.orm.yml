@@ -1,0 +1,53 @@
+SimpleShopApiBundle\Entity\PaymentBill:
+    type: entity
+    table: payment_bill
+    indexes:
+        fk_payment_bill_orders1_idx:
+            columns:
+                - order_id
+    id:
+        billId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: bill_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        paymentType:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: payment_type
+        billStatus:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+            column: bill_status
+        dtCreated:
+            type: datetime
+            nullable: false
+            column: dt_created
+        total:
+            type: decimal
+            nullable: false
+            precision: 19
+            scale: 2
+    manyToOne:
+        order:
+            targetEntity: Orders
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                order_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

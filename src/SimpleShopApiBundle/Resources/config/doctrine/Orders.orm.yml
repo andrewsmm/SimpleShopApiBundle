@@ -1,0 +1,79 @@
+SimpleShopApiBundle\Entity\Orders:
+    type: entity
+    table: orders
+    indexes:
+        fk_orders_basket1_idx:
+            columns:
+                - basket_id
+    id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        firstName:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: first_name
+        lastName:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: last_name
+        middleName:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: middle_name
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        phone:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        address:
+            type: string
+            nullable: true
+            length: 1000
+            options:
+                fixed: false
+        total:
+            type: decimal
+            nullable: false
+            precision: 19
+            scale: 2
+        cmt:
+            type: string
+            nullable: true
+            length: 1500
+            options:
+                fixed: false
+    manyToOne:
+        basket:
+            targetEntity: Basket
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                basket_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
